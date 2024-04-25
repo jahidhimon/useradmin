@@ -74,3 +74,5 @@ end
 gem 'devise', '~> 4.9'
 
 gem 'rubocop', '~> 1.63'
+
+gem "pg", "~> 1.5"
