@@ -1,0 +1,43 @@
+<div class="card w-full mt-24 max-w-xl shadow-xl mx-auto md:p-5 p-3">
+  <h2 class="text-3xl py-3">User registration to Continue</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+    <div class="form-control pb-1">
+      <%= form.label :email, class: "label-text" %>
+      <%= form.text_field :email, class: "input input-bordered input-primary w-full max-w-sm", placeholder: "Email"%>
+      <% resource.errors.full_messages_for(:email).each do |message| %>
+        <p class="text-xs text-red-500"><%= message %></p>
+      <% end %>
+    </div>
+
+    <div class="form-control pb-1">
+      <%= form.label :name, class: "label-text" %>
+      <%= form.text_field :name, class: "input input-bordered input-primary w-full max-w-sm", placeholder: "Name"%>
+      <% resource.errors.full_messages_for(:name).each do |message| %>
+        <p class="text-xs text-red-500"><%= message %></p>
+      <% end %>
+    </div>
+
+    <div class="form-control pb-1">
+      <%= form.label :password, class: "label-text" %>
+      <%= form.password_field :password, class: "input input-bordered input-primary w-full max-w-sm", placeholder: "Password"%>
+      <% resource.errors.full_messages_for(:password).each do |message| %>
+        <p class="text-xs text-red-500"><%= message %></p>
+      <% end %>
+    </div>
+
+    <div class="form-control pb-1">
+      <%= form.label :password_confirmation, class: "label-text" %>
+      <%= form.password_field :password_confirmation, class: "input input-bordered input-primary w-full max-w-sm", placeholder: "Password confirmation"%>
+      <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+        <p class="text-xs text-red-500"><%= message %></p>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Sign Up", class: "btn btn-accent" %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+
+</div>
