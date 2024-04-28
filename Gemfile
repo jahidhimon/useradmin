@@ -55,7 +55,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'faker'
   gem 'pry', '~> 0.14.2'
   gem 'rack-mini-profiler'
   gem 'rubocop', '~> 1.63'
@@ -67,6 +66,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+gem 'faker'
 
 gem 'devise', '~> 4.9'
 
