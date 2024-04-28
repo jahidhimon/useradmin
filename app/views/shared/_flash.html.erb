@@ -1,0 +1,13 @@
+<div class="toast">
+  <div class="col-xs-10 col-xs-offset-1">
+    <% flash.each do |type, msg| %>
+			<% if type == 'error' || type == 'alert' %>
+				<div class='alert bg-red-300 text-black <%= "#{type}" %>' data-controller="toast">
+					<%= msg %>
+				</div>
+			<% else %>
+				<div class="alert alert-success"  data-controller="toast"><%= msg %></div>
+			<% end %>
+    <% end %>
+	</div>
+</div>

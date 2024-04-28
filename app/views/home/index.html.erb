@@ -1,3 +1,45 @@
-<div class="text-3xl">
-  Hello world
+<div class="overflow-x-auto md:w-3/5 w-11/12 mx-auto mt-10" data-controller="select block">
+	<%= form_with url: block_path do |form| %>
+		<div class="flex justify-between h-20">
+			<div class="font-bold text-center">Blocked: <%= @blocked_count %></div>
+			<div class="space-x-4 hidden" data-select-target="btns">
+				<%= form.submit "Block", class: "btn btn-secondary btn-sm"  %>
+				<%= form.submit "Unblock", class: "btn btn-primary btn-sm" %>
+			</div>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						<label>
+							<input type="checkbox" class="checkbox" data-action="select#toggleRowChecks" data-select-target="check" />
+						</label>
+					</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.each do |user| %>
+					<tr>
+						<th>
+							<label>
+								<input type="checkbox" class="checkbox" name="ids[]" value="<%= user.id %>" data-action="select#toggleMainCheck" data-select-target="row" data-block-target="row" />
+							</label>
+						</th>
+						<td>
+							<div>
+								<div class="font-bold"><%= user.name %></div>
+							</div>
+						</td>
+						<td>
+							<span class="badge badge-ghost badge-sm"><%= user.email %></span>
+						</td>
+						<td><%= user.blocked ? "Blocked": "Not Blocked" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
 </div>
