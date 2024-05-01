@@ -10,9 +10,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create(email: 'jahidhasanimmonn@gmail.com', name: 'Jahid Hasan', password: 'helloworld')
+User.create(email: 'jahidhasanimonn@gmail.com', name: 'Jahid Hasan', password: 'helloworld')
 
-100.times do
+20.times do
   username = Faker::Name.name
   User.create(email: Faker::Internet.email(name: username), name: username, password: 'helloworld')
 end
