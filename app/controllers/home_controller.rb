@@ -2,28 +2,35 @@
 
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    @users = User.order(last_sign_in_at: :asc)
     @blocked_count = @users.where(blocked: true).count
   end
 
-  def manage_blocking
+  def manage_users
     user_ids = params.require(:ids)
     if params[:commit] == 'Block'
       block user_ids
-    else
+    elsif params[:commit] == "Unblock"
       unblock user_ids
+    else
+      delete user_ids
     end
   end
 
   private
 
-  def block(blockinglist)
-    User.where(id: blockinglist).update_all(blocked: true)
+  def block(blocking_list)
+    User.where(id: blocking_list).update_all(blocked: true)
     redirect_to root_path
   end
 
-  def unblock(unblockinglist)
-    User.where(id: unblockinglist).update_all(blocked: false)
+  def delete(delete_list)
+    User.where(id: delete_list).destroy_all
+    redirect_to root_path
+  end
+
+  def unblock(unblocking_list)
+    User.where(id: unblocking_list).update_all(blocked: false)
     redirect_to root_path
   end
 end
